@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sport Training Beach – Gimnasio El Quisco</title>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --rojo: #dc1c1c;
+  --rojo-oscuro: #a00000;
+  --rojo-vivo: #ff2200;
+  --negro: #0a0a0a;
+  --negro2: #111111;
+  --negro3: #1a1a1a;
+  --gris-oscuro: #222222;
+  --blanco: #ffffff;
+  --oro: #c8a000;
+  --oro-claro: #ffd700;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Ubuntu', sans-serif; background: var(--negro); color: var(--blanco); overflow-x: hidden; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Teko', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--rojo);
+  padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px;
+}
+nav .logo img { height: 44px; }
+nav ul { list-style: none; display: flex; gap: 1.6rem; align-items: center; }
+nav ul a { color: var(--blanco); text-decoration: none; font-family: 'Teko', sans-serif; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+nav ul a:hover { color: var(--rojo); }
+nav .nav-cta { background: var(--rojo); color: #fff !important; padding: 0.4rem 1.2rem; border-radius: 2px; }
+nav .nav-cta:hover { background: var(--rojo-oscuro) !important; }
+nav .nav-planes {
+  color: var(--rojo) !important;
+  font-weight: 700;
+  border: 1px solid rgba(220,28,28,0.45);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
+  transition: all 0.2s !important;
+  position: relative;
+}
+nav .nav-planes::after {
+  content: '⭐';
+  font-size: 0.6rem;
+  position: absolute;
+  top: -6px;
+  right: -4px;
+}
+nav .nav-planes:hover { background: rgba(220,28,28,0.15) !important; border-color: var(--rojo) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; }
+.hamburger span { display: block; width: 26px; height: 3px; background: var(--blanco); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ── HERO ── */
+#hero { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.hero-img-bg {
+  position: absolute; inset: 0;
+  background-image: url('Componentes\ página\ web\ anterior/d951a5c0-609e-45a4-99d6-ec0468f2b0cf-1024x768.jpeg');
+  background-size: cover; background-position: center 30%;
+  filter: brightness(0.3) saturate(0.5); z-index: 0;
+}
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg,rgba(140,0,0,0.25) 0%,transparent 60%), linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.8) 100%); z-index: 1; }
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 900px; }
+.hero-eyebrow { font-family: 'Teko',sans-serif; font-size: 1rem; letter-spacing: 0.35em; color: var(--rojo); text-transform: uppercase; display: block; margin-bottom: 1rem; }
+.hero-title { font-size: clamp(3.5rem,11vw,9rem); line-height: 0.92; font-weight: 700; color: var(--blanco); text-shadow: 0 0 60px rgba(220,28,28,0.35); margin-bottom: 0.3em; }
+.hero-title span { color: var(--rojo); display: block; }
+.hero-sub { font-size: clamp(1rem,2vw,1.3rem); color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; font-weight: 300; max-width: 550px; margin-left: auto; margin-right: auto; }
+.hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; color: rgba(255,255,255,0.35); animation: bounce 2s infinite; font-size: 1.4rem; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(10px);} }
+.ki-aura { animation: ki-pulse 3s ease-in-out infinite; }
+@keyframes ki-pulse { 0%,100%{text-shadow:0 0 20px rgba(220,28,28,0.3);} 50%{text-shadow:0 0 60px rgba(220,28,28,0.8),0 0 100px rgba(255,50,0,0.3);} }
+.fire-text { background: linear-gradient(135deg,#fff 0%,#ffcc00 40%,#ff4400 70%,#cc0000 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+/* ── BUTTONS ── */
+.btn { display: inline-block; padding: 0.85rem 2.5rem; font-family: 'Teko',sans-serif; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; border-radius: 2px; transition: all 0.25s; }
+.btn-rojo { background: var(--rojo); color: #fff; }
+.btn-rojo:hover { background: var(--rojo-vivo); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(220,28,28,0.45); }
+.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.45); margin-left: 1rem; }
+.btn-outline:hover { border-color: var(--rojo); color: var(--rojo); }
+
+/* ── LAYOUT ── */
+section { padding: 6rem 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-label { font-family: 'Teko',sans-serif; font-size: 0.95rem; letter-spacing: 0.3em; color: var(--rojo); text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+.section-title { font-size: clamp(2.5rem,5vw,4rem); line-height: 1; margin-bottom: 1rem; }
+.section-divider { width: 60px; height: 3px; background: var(--rojo); margin: 1.2rem 0 2rem; }
+
+/* ── POWER STATS ── */
+.power-bar-section { background: linear-gradient(135deg,#0a0000,#0e0000); padding: 3rem 2rem; border-top: 1px solid rgba(220,28,28,0.2); border-bottom: 1px solid rgba(220,28,28,0.2); }
+.power-stats { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; text-align: center; }
+.power-stat-num { font-family: 'Teko',sans-serif; font-size: 3.5rem; color: var(--rojo); line-height: 1; text-shadow: 0 0 30px rgba(220,28,28,0.4); }
+.power-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+/* ── ABOUT ── */
+#about { background: var(--negro2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.about-img { position: relative; border-radius: 4px; overflow: hidden; }
+.about-img img { width: 100%; height: 480px; object-fit: cover; display: block; filter: brightness(0.85) saturate(0.8); transition: filter 0.4s; }
+.about-img:hover img { filter: brightness(0.95) saturate(1); }
+.about-img::before { content:''; position:absolute; inset:0; border:2px solid var(--rojo); border-radius:4px; z-index:1; opacity:0.6; }
+.about-badge { position:absolute; bottom:1.5rem; right:1.5rem; background:var(--rojo); color:#fff; font-family:'Teko',sans-serif; font-size:0.9rem; letter-spacing:0.1em; padding:0.5rem 1rem; border-radius:2px; z-index:2; }
+.about-text p { color:rgba(255,255,255,0.7); line-height:1.8; font-size:1rem; margin-bottom:1.5rem; }
+.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:2rem; }
+.feature-item { display:flex; align-items:center; gap:0.7rem; padding:0.75rem 1rem; background:var(--gris-oscuro); border-radius:3px; border-left:3px solid var(--rojo); }
+.feature-item i { color:var(--rojo); font-size:1rem; width:18px; text-align:center; }
+.feature-item span { font-size:0.88rem; color:rgba(255,255,255,0.82); }
+
+/* ── SERVICIOS ── */
+#servicios { background: var(--negro); }
+.servicios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+.servicio-card { background:var(--negro3); border:1px solid rgba(220,28,28,0.18); border-radius:4px; padding:2rem 1.5rem; text-align:center; transition:all 0.3s; position:relative; overflow:hidden; }
+.servicio-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--rojo); transform:scaleX(0); transition:transform 0.3s; }
+.servicio-card:hover { border-color:rgba(220,28,28,0.6); transform:translateY(-4px); box-shadow:0 12px 40px rgba(220,28,28,0.12); }
+.servicio-card:hover::before { transform:scaleX(1); }
+.servicio-icon { font-size:2.2rem; color:var(--rojo); margin-bottom:1rem; }
+.servicio-card h4 { font-size:1.3rem; margin-bottom:0.5rem; }
+.servicio-card p { font-size:0.85rem; color:rgba(255,255,255,0.52); line-height:1.55; }
+
+/* ── PLANES ── */
+#planes { background: var(--negro2); }
+.planes-intro { max-width:700px; color:rgba(255,255,255,0.65); line-height:1.7; margin-bottom:3rem; }
+.planes-tabs { display:flex; gap:0.5rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+.tab-btn { padding:0.65rem 1.5rem; background:transparent; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-family:'Teko',sans-serif; font-size:1rem; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; border-radius:2px; transition:all 0.2s; }
+.tab-btn.active, .tab-btn:hover { background:var(--rojo); border-color:var(--rojo); color:#fff; }
+.planes-panel { display:none; }
+.planes-panel.active { display:block; }
+.planes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; }
+.plan-card { background:var(--gris-oscuro); border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:2rem 1.5rem; position:relative; transition:all 0.3s; display:flex; flex-direction:column; }
+.plan-card.featured { border-color:var(--rojo); background:linear-gradient(160deg,#1e0606 0%,var(--gris-oscuro) 100%); }
+.plan-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(220,28,28,0.12); }
+.plan-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--rojo); color:#fff; font-family:'Teko',sans-serif; font-size:0.8rem; letter-spacing:0.1em; padding:0.2rem 0.8rem; border-radius:2px; white-space:nowrap; }
+.plan-name { font-size:1.5rem; margin-bottom:0.3rem; }
+.plan-price { font-size:2.8rem; color:var(--rojo); line-height:1; margin-bottom:0.2rem; }
+.plan-period { font-size:0.82rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; }
+.plan-features { list-style:none; margin-bottom:1.5rem; flex:1; }
+.plan-features li { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.88rem; color:rgba(255,255,255,0.72); padding:0.35rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.plan-features li i { color:var(--rojo); margin-top:2px; flex-shrink:0; }
+.plan-cta { display:block; text-align:center; padding:0.75rem; background:var(--rojo); color:#fff; text-decoration:none; font-family:'Teko',sans-serif; font-size:1rem; letter-spacing:0.1em; text-transform:uppercase; border-radius:2px; transition:background 0.2s; border:none; cursor:pointer; width:100%; }
+.plan-cta:hover { background:var(--rojo-vivo); }
+
+/* ticket diario destacado */
+.ticket-hero { max-width:480px; margin:0 auto; }
+.ticket-hero .plan-price { font-size:4rem; }
+
+/* ── HORARIO ── */
+#horario { background:var(--negro); position:relative; overflow:hidden; }
+#horario::before { content:'HORARIO'; position:absolute; font-family:'Teko',sans-serif; font-size:15rem; color:rgba(255,255,255,0.02); top:50%; left:50%; transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none; }
+.horario-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:3rem; }
+.horario-card { background:var(--negro3); border:1px solid rgba(220,28,28,0.25); border-radius:4px; padding:2.5rem 2rem; text-align:center; }
+.horario-card.cerrado { opacity:0.5; border-color:rgba(255,255,255,0.08); }
+.horario-dia { font-family:'Teko',sans-serif; font-size:1.1rem; color:rgba(255,255,255,0.5); margin-bottom:0.5rem; letter-spacing:0.08em; text-transform:uppercase; }
+.horario-tiempo { font-family:'Teko',sans-serif; font-size:2.4rem; color:var(--rojo); line-height:1; }
+.horario-card.cerrado .horario-tiempo { color:rgba(255,255,255,0.35); }
+.horario-icon { font-size:2rem; color:var(--rojo); margin-bottom:1rem; }
+
+/* ── RUTINAS ── */
+#rutinas { background:linear-gradient(135deg,#0e0000 0%,var(--negro2) 100%); border-top:2px solid var(--rojo); border-bottom:2px solid var(--rojo); }
+.rutinas-container { display:grid; grid-template-columns:1fr 1.4fr; gap:3rem; align-items:start; }
+.rutinas-form-card { background:var(--negro3); border:1px solid rgba(220,28,28,0.3); border-radius:6px; padding:2.5rem; }
+.form-group { margin-bottom:1.4rem; }
+.form-group label { display:block; font-family:'Teko',sans-serif; font-size:0.95rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:0.45rem; }
+.form-group select, .form-group input { width:100%; padding:0.75rem 1rem; background:var(--gris-oscuro); border:1px solid rgba(255,255,255,0.1); border-radius:3px; color:var(--blanco); font-family:'Ubuntu',sans-serif; font-size:0.95rem; outline:none; transition:border-color 0.2s; }
+.form-group select:focus, .form-group input:focus { border-color:var(--rojo); }
+.form-group select option { background:var(--negro3); }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.rutinas-result { background:var(--negro3); border:1px solid rgba(220,28,28,0.3); border-radius:6px; padding:2.5rem; min-height:400px; }
+.rutinas-result-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; min-height:300px; opacity:0.35; text-align:center; gap:1rem; }
+.rutinas-result-placeholder i { font-size:4rem; color:var(--rojo); }
+.routine-output { display:none; }
+.routine-output.visible { display:block; }
+.routine-title { font-size:1.8rem; color:var(--rojo); margin:0 0 0.2rem; }
+.routine-subtitle { font-size:0.82rem; color:rgba(255,255,255,0.45); margin:0 0 1.5rem; }
+.routine-day { margin-bottom:1.5rem; }
+.routine-day-title { font-family:'Teko',sans-serif; font-size:1.15rem; color:var(--blanco); background:rgba(220,28,28,0.12); border-left:3px solid var(--rojo); padding:0.5rem 1rem; margin-bottom:0.75rem; letter-spacing:0.05em; }
+.exercise-list { list-style:none; display:flex; flex-direction:column; gap:0.4rem; }
+.exercise-item { display:grid; grid-template-columns:1fr auto; align-items:center; padding:0.55rem 1rem; background:rgba(255,255,255,0.04); border-radius:3px; font-size:0.88rem; }
+.exercise-item .ex-name { color:rgba(255,255,255,0.82); }
+.exercise-item .ex-sets { color:var(--rojo); font-family:'Teko',sans-serif; font-size:1rem; }
+.routine-tip { margin-top:1.5rem; padding:1rem; background:rgba(220,28,28,0.08); border:1px solid rgba(220,28,28,0.2); border-radius:3px; font-size:0.84rem; color:rgba(255,255,255,0.6); }
+
+/* ── LEADERBOARD ── */
+#leaderboard { background:var(--negro); position:relative; overflow:hidden; }
+.saiyan-deco {
+  position:absolute; right:-20px; top:50%; transform:translateY(-50%);
+  opacity:0.07; pointer-events:none; z-index:0;
+  width:340px; filter:drop-shadow(0 0 40px rgba(220,28,28,0.5));
+}
+.lb-inner { position:relative; z-index:1; }
+.lb-tabs { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:3rem; }
+.lb-tab { padding:1.5rem; text-align:center; cursor:pointer; border-radius:4px; border:1px solid rgba(255,255,255,0.1); background:var(--negro3); transition:all 0.3s; }
+.lb-tab.active { background:linear-gradient(135deg,#3a0000,#1a0000); border-color:var(--rojo); box-shadow:0 0 30px rgba(220,28,28,0.15); }
+.lb-tab-icon { font-size:2.2rem; margin-bottom:0.5rem; display:block; }
+.lb-tab-title { font-family:'Teko',sans-serif; font-size:1.5rem; text-transform:uppercase; letter-spacing:0.05em; }
+.lb-tab-sub { font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:0.2rem; }
+.lb-panel { display:none; }
+.lb-panel.active { display:block; }
+.lb-list { display:flex; flex-direction:column; gap:0.75rem; }
+.lb-entry { display:grid; grid-template-columns:56px 1fr auto; align-items:center; gap:1rem; padding:1.2rem 1.5rem; background:var(--negro3); border:1px solid rgba(255,255,255,0.07); border-radius:4px; transition:all 0.25s; }
+.lb-entry:hover { border-color:rgba(220,28,28,0.4); transform:translateX(4px); }
+.lb-entry.rank-1 { background:linear-gradient(135deg,#2d0000,#1a0000); border-color:var(--oro); }
+.lb-entry.rank-2 { background:linear-gradient(135deg,#1a1a1a,#111); border-color:#888; }
+.lb-entry.rank-3 { border-color:#8B4513; }
+.lb-rank { font-family:'Teko',sans-serif; font-size:2.2rem; text-align:center; color:rgba(255,255,255,0.25); }
+.lb-entry.rank-1 .lb-rank { color:var(--oro-claro); text-shadow:0 0 20px rgba(255,215,0,0.5); }
+.lb-entry.rank-2 .lb-rank { color:#ccc; }
+.lb-entry.rank-3 .lb-rank { color:#cd7f32; }
+.lb-name { font-family:'Teko',sans-serif; font-size:1.4rem; text-transform:uppercase; }
+.lb-detail { font-size:0.78rem; color:rgba(255,255,255,0.4); }
+.lb-badge { display:inline-flex; align-items:center; gap:0.3rem; background:rgba(220,28,28,0.12); border:1px solid rgba(220,28,28,0.3); border-radius:2px; padding:0.15rem 0.6rem; font-size:0.72rem; color:var(--rojo); font-family:'Teko',sans-serif; letter-spacing:0.05em; margin-top:0.3rem; }
+.lb-score { text-align:right; }
+.lb-number { font-family:'Teko',sans-serif; font-size:2.4rem; color:var(--rojo); line-height:1; }
+.lb-unit { font-size:0.72rem; color:rgba(255,255,255,0.38); }
+.lb-note { margin-top:1.5rem; padding:1rem; background:rgba(220,28,28,0.05); border:1px solid rgba(220,28,28,0.12); border-radius:4px; font-size:0.82rem; color:rgba(255,255,255,0.38); text-align:center; }
+
+/* ── GALERÍA ── */
+#galeria { background:var(--negro2); padding-bottom:4rem; }
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0.5rem;
+  margin-top:2.5rem;
+}
+.gallery-item { overflow:hidden; border-radius:3px; cursor:pointer; position:relative; }
+.gallery-item img { width:100%; height:260px; object-fit:cover; display:block; transition:transform 0.5s,filter 0.3s; filter:brightness(0.78) saturate(0.7); }
+.gallery-item:hover img { transform:scale(1.06); filter:brightness(0.95) saturate(1); }
+.gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(220,28,28,0.4),transparent); opacity:0; transition:opacity 0.3s; }
+.gallery-item:hover .gallery-overlay { opacity:1; }
+
+/* ── CONTACTO ── */
+#contacto { background:var(--negro); }
+.contacto-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:start; margin-top:3rem; }
+.contacto-items { display:flex; flex-direction:column; gap:1.5rem; }
+.contacto-item { display:flex; align-items:flex-start; gap:1.2rem; }
+.contacto-item-icon { width:44px; height:44px; background:rgba(220,28,28,0.12); border:1px solid rgba(220,28,28,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--rojo); font-size:1rem; flex-shrink:0; }
+.contacto-item-text p { color:rgba(255,255,255,0.62); font-size:0.9rem; line-height:1.55; }
+.contacto-item-text a { color:rgba(255,255,255,0.62); text-decoration:none; }
+.contacto-item-text a:hover { color:var(--rojo); }
+.contacto-item-label { font-family:'Teko',sans-serif; font-size:0.95rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-bottom:0.2rem; }
+.whatsapp-btn { display:inline-flex; align-items:center; gap:0.75rem; margin-top:2rem; padding:1rem 1.8rem; background:#25D366; color:#fff; text-decoration:none; border-radius:3px; font-family:'Teko',sans-serif; font-size:1.1rem; letter-spacing:0.1em; text-transform:uppercase; transition:background 0.2s; }
+.whatsapp-btn:hover { background:#128C7E; }
+.contacto-form { background:var(--negro3); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:2.5rem; }
+.contacto-form h3 { font-size:1.8rem; margin-bottom:1.5rem; }
+.contacto-form input, .contacto-form select, .contacto-form textarea { width:100%; padding:0.8rem 1rem; background:var(--gris-oscuro); border:1px solid rgba(255,255,255,0.08); border-radius:3px; color:var(--blanco); font-family:'Ubuntu',sans-serif; font-size:0.95rem; outline:none; margin-bottom:1rem; transition:border-color 0.2s; }
+.contacto-form select option { background:var(--negro3); }
+.contacto-form input:focus, .contacto-form select:focus, .contacto-form textarea:focus { border-color:var(--rojo); }
+.contacto-form textarea { resize:vertical; min-height:110px; }
+
+/* ── FOOTER ── */
+footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); padding:3rem 2rem 1.5rem; }
+.footer-grid { max-width:1200px; margin:0 auto 2.5rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+.footer-brand img { height:42px; margin-bottom:1rem; }
+.footer-brand p { color:rgba(255,255,255,0.42); font-size:0.875rem; line-height:1.7; max-width:280px; }
+.footer-col h4 { font-size:1.2rem; margin-bottom:1.2rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(220,28,28,0.3); }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+.footer-links a { color:rgba(255,255,255,0.45); text-decoration:none; font-size:0.88rem; transition:color 0.2s; }
+.footer-links a:hover { color:var(--rojo); }
+.footer-bottom { max-width:1200px; margin:0 auto; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center; font-size:0.78rem; color:rgba(255,255,255,0.28); }
+
+/* ── WHATSAPP WIDGET ── */
+.wa-float {
+  position:fixed; bottom:2rem; right:2rem; z-index:9000;
+  display:flex; align-items:center; gap:0;
+  text-decoration:none; cursor:pointer;
+}
+.wa-float-bubble {
+  background:#25D366; color:#fff;
+  width:58px; height:58px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem; box-shadow:0 4px 20px rgba(37,211,102,0.5);
+  transition:all 0.3s; position:relative; z-index:1;
+}
+.wa-float:hover .wa-float-bubble { background:#128C7E; transform:scale(1.1); box-shadow:0 8px 30px rgba(37,211,102,0.65); }
+.wa-float-label {
+  background:#25D366; color:#fff;
+  padding:0.5rem 1rem 0.5rem 1.5rem; border-radius:30px 0 0 30px;
+  font-family:'Ubuntu',sans-serif; font-size:0.85rem; font-weight:500;
+  white-space:nowrap; transform:translateX(10px);
+  max-width:0; overflow:hidden; opacity:0;
+  transition:all 0.35s ease; pointer-events:none;
+}
+.wa-float:hover .wa-float-label { max-width:180px; opacity:1; transform:translateX(0); }
+.wa-pulse { position:absolute; inset:-4px; border-radius:50%; background:rgba(37,211,102,0.35); animation:wa-ring 2s ease-out infinite; }
+@keyframes wa-ring { 0%{transform:scale(1);opacity:0.6;} 100%{transform:scale(1.6);opacity:0;} }
+
+/* ── LIGHTBOX ── */
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:9999; align-items:center; justify-content:center; padding:2rem; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:4px; }
+.lightbox-close { position:absolute; top:1.5rem; right:2rem; font-size:2.5rem; color:rgba(255,255,255,0.55); cursor:pointer; background:none; border:none; transition:color 0.2s; }
+.lightbox-close:hover { color:var(--rojo); }
+
+/* ── FADE IN ── */
+.fade-in { opacity:0; transform:translateY(28px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--negro); }
+::-webkit-scrollbar-thumb { background:var(--rojo-oscuro); border-radius:3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:1024px) {
+  .power-stats { grid-template-columns:repeat(2,1fr); }
+  .servicios-grid { grid-template-columns:repeat(2,1fr); }
+  .gallery-grid { grid-template-columns:repeat(2,1fr); }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .footer-brand { grid-column:span 2; }
+}
+@media (max-width:768px) {
+  nav ul { display:none; position:fixed; inset:70px 0 0 0; background:rgba(10,10,10,0.98); flex-direction:column; padding:2.5rem 2rem; gap:1.5rem; z-index:999; border-top:1px solid rgba(220,28,28,0.3); }
+  nav ul.open { display:flex; }
+  nav ul a { font-size:1.4rem; }
+  .hamburger { display:flex; }
+  section { padding:4rem 1.5rem; }
+  .about-grid { grid-template-columns:1fr; gap:2rem; }
+  .about-img img { height:320px; }
+  .features-grid { grid-template-columns:1fr; }
+  .horario-grid { grid-template-columns:1fr; gap:1rem; }
+  .rutinas-container { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .lb-tabs { grid-template-columns:1fr; }
+  .contacto-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  .footer-brand { grid-column:auto; }
+  .footer-bottom { flex-direction:column; gap:0.4rem; text-align:center; }
+  .saiyan-deco { width:200px; opacity:0.05; right:-30px; }
+  .planes-grid { grid-template-columns:1fr 1fr; }
+  .hero-title { font-size:3.5rem; }
+}
+@media (max-width:520px) {
+  .servicios-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns:1fr 1fr; }
+  .gallery-item img { height:160px; }
+  .planes-grid { grid-template-columns:1fr; }
+  .power-stats { grid-template-columns:1fr 1fr; }
+  .hero-title { font-size:2.8rem; }
+  .btn-outline { margin-left:0; margin-top:0.8rem; }
+  .wa-float-label { display:none; }
+  .wa-float-bubble { width:52px; height:52px; font-size:1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">
+    <img src="Componentes página web anterior/cropped-logogimnasiosport-300x100.jpg" alt="Sport Training Beach">
+  </div>
+  <ul id="nav-menu">
+    <li><a href="#about" onclick="closeMenu()">Nosotros</a></li>
+    <li><a href="#planes" class="nav-planes" onclick="closeMenu()">Planes</a></li>
+    <li><a href="#rutinas" onclick="closeMenu()">Mi Rutina</a></li>
+    <li><a href="#leaderboard" onclick="closeMenu()">Leaderboard</a></li>
+    <li><a href="#galeria" onclick="closeMenu()">Fotos</a></li>
+    <li><a href="#contacto" class="nav-cta" onclick="closeMenu()">Contáctanos</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">El Quisco · Litoral Central · El Gimnasio Más Grande</span>
+    <h1 class="hero-title ki-aura">No digas<span>más mañana.</span></h1>
+    <p class="hero-sub">Forja tu cuerpo. Despierta al guerrero. Comienza hoy en Sport Training Beach.</p>
+    <div>
+      <a href="#planes" class="btn btn-rojo">Ver Planes</a>
+      <a href="#rutinas" class="btn btn-outline">Mi Rutina</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- STATS -->
+<div class="power-bar-section">
+  <div class="power-stats">
+    <div class="fade-in"><div class="power-stat-num">4</div><div class="power-stat-label">Salas de Entrenamiento</div></div>
+    <div class="fade-in"><div class="power-stat-num">16h</div><div class="power-stat-label">Apertura Lun–Vie</div></div>
+    <div class="fade-in"><div class="power-stat-num">5</div><div class="power-stat-label">Planes para ti</div></div>
+    <div class="fade-in"><div class="power-stat-num">∞</div><div class="power-stat-label">Energía Disponible</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div class="about-img">
+        <img src="Componentes página web anterior/4e02c83b-d221-4ddd-a07b-349fa19191ba.jpeg" alt="Gimnasio Sport Training Beach">
+        <div class="about-badge">Metros cuadrados de pura energía</div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">Sobre Nosotros</span>
+        <h2 class="section-title">El mejor<br><span style="color:var(--rojo)">Gimnasio</span><br>del Litoral</h2>
+        <div class="section-divider"></div>
+        <p>Somos un gimnasio de alto nivel tanto en infraestructura como en máquinas. Contamos con sala cardiovascular, sala de spinning, sala musculoesquelética y área funcional para que cada guerrero encuentre su arena.</p>
+        <p>En Sport Training Beach entendemos que cada atleta tiene su propio camino. Por eso ofrecemos planes flexibles, un ambiente motivante y el equipamiento necesario para alcanzar tu máximo nivel de poder.</p>
+        <div class="features-grid">
+          <div class="feature-item"><i class="fas fa-heartbeat"></i><span>Sala Cardiovascular</span></div>
+          <div class="feature-item"><i class="fas fa-bicycle"></i><span>Sala de Spinning</span></div>
+          <div class="feature-item"><i class="fas fa-dumbbell"></i><span>Sala Musculoesquelética</span></div>
+          <div class="feature-item"><i class="fas fa-running"></i><span>Área Funcional</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <span class="section-label fade-in">Lo que ofrecemos</span>
+    <h2 class="section-title fade-in">Entrena como<br><span style="color:var(--rojo)">un Super Saiyan</span></h2>
+    <div class="section-divider fade-in"></div>
+    <div class="servicios-grid">
+      <div class="servicio-card fade-in">
+        <div class="servicio-icon"><i class="fas fa-fire-alt"></i></div>
+        <h4>Pérdida de Peso</h4>
+        <p>Cardio y circuitos diseñados para quemar grasa y liberar tu poder oculto.</p>
+      </div>
+      <div class="servicio-card fade-in">
+        <div class="servicio-icon"><i class="fas fa-dumbbell"></i></div>
+        <h4>Fuerza Muscular</h4>
+        <p>Máquinas y pesos libres para construir la musculatura de un guerrero élite.</p>
+      </div>
+      <div class="servicio-card fade-in">
+        <div class="servicio-icon"><i class="fas fa-bolt"></i></div>
+        <h4>Entrenamiento Funcional</h4>
+        <p>Velocidad, agilidad y resistencia. El entrenamiento completo del guerrero moderno.</p>
+      </div>
+      <div class="servicio-card fade-in">
+        <div class="servicio-icon"><i class="fas fa-bicycle"></i></div>
+        <h4>Spinning</h4>
+        <p>Clases de cycling de alta intensidad para maximizar el rendimiento cardiovascular.</p>
+      </div>
+      <div class="servicio-card fade-in">
+        <div class="servicio-icon"><i class="fas fa-seedling"></i></div>
+        <h4>Flexibilidad</h4>
+        <p>Movilidad y estiramiento para mantener el cuerpo ágil y libre de lesiones.</p>
+      </div>
+      <div class="servicio-card fade-in">
+        <div class="servicio-icon"><i class="fas fa-apple-alt"></i></div>
+        <h4>Consejos Nutricionales</h4>
+        <p>Orientación básica de alimentación para complementar tu entrenamiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes">
+  <div class="container">
+    <span class="section-label fade-in">Elige tu poder</span>
+    <h2 class="section-title fade-in">Planes adaptados<br><span style="color:var(--rojo)">a tu ritmo</span></h2>
+    <div class="section-divider fade-in"></div>
+    <p class="planes-intro fade-in">Sin excusas. Hemos creado planes para cada guerrero, desde el que recién despierta hasta el que ya vive en el dojo. Elige tu nivel de compromiso.</p>
+
+    <div class="planes-tabs fade-in">
+      <button class="tab-btn" onclick="switchTab('diario',this)">Ticket Diario</button>
+      <button class="tab-btn active" onclick="switchTab('mensual',this)">Planes Mensuales</button>
+      <button class="tab-btn" onclick="switchTab('full',this)">Plan Full Extendido</button>
+    </div>
+
+    <!-- TAB: TICKET DIARIO -->
+    <div id="tab-diario" class="planes-panel">
+      <div style="max-width:440px;margin:0 auto;">
+        <div class="plan-card featured ticket-hero" style="text-align:center;">
+          <div class="plan-badge">PASE DEL DÍA</div>
+          <h3 class="plan-name" style="font-size:2rem;margin-top:1rem;">Ticket Diario</h3>
+          <div class="plan-price">$5.000</div>
+          <div class="plan-period">por sesión · sin compromiso</div>
+          <ul class="plan-features" style="text-align:left;">
+            <li><i class="fas fa-check"></i>1 ingreso al gimnasio</li>
+            <li><i class="fas fa-check"></i>Acceso a todas las salas</li>
+            <li><i class="fas fa-check"></i>Sin mensualidad</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+          <p style="margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.35);">Ideal para visitantes o para probar antes de suscribirte</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: MENSUALES -->
+    <div id="tab-mensual" class="planes-panel active">
+      <div class="planes-grid">
+        <div class="plan-card fade-in">
+          <h3 class="plan-name">Plan 8 Tickets</h3>
+          <div class="plan-price">$24.000</div>
+          <div class="plan-period">por mes</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i>8 ingresos al gimnasio</li>
+            <li><i class="fas fa-check"></i>Válidos durante 1 mes</li>
+            <li><i class="fas fa-check"></i>Acceso a todas las salas</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+        <div class="plan-card fade-in">
+          <h3 class="plan-name">Plan 12 Tickets</h3>
+          <div class="plan-price">$27.000</div>
+          <div class="plan-period">por mes</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i>12 ingresos al gimnasio</li>
+            <li><i class="fas fa-check"></i>Válidos durante 1 mes</li>
+            <li><i class="fas fa-check"></i>Acceso a todas las salas</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+        <div class="plan-card fade-in">
+          <h3 class="plan-name">Estudiantes</h3>
+          <div class="plan-price">$25.000</div>
+          <div class="plan-period">por mes</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-fire"></i>Ingresos ilimitados</li>
+            <li><i class="fas fa-fire"></i>Válidos durante 1 mes</li>
+            <li><i class="fas fa-info-circle"></i>Cert. alumno regular</li>
+            <li><i class="fas fa-info-circle"></i>Firma tutor legal</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+        <div class="plan-card featured fade-in">
+          <div class="plan-badge">⭐ RECOMENDADO</div>
+          <h3 class="plan-name">Plan Full</h3>
+          <div class="plan-price">$30.000</div>
+          <div class="plan-period">por mes</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-fire"></i>Ingresos ilimitados</li>
+            <li><i class="fas fa-fire"></i>Válidos durante 1 mes</li>
+            <li><i class="fas fa-fire"></i>Todas las salas</li>
+            <li><i class="fas fa-fire"></i>Sin restricciones</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: PLAN FULL EXTENDIDO -->
+    <div id="tab-full" class="planes-panel">
+      <div class="planes-grid" style="max-width:860px;">
+        <div class="plan-card fade-in">
+          <h3 class="plan-name">3 Meses</h3>
+          <div class="plan-price">$84.000</div>
+          <div class="plan-period">pago único</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-fire"></i>Uso ilimitado en días</li>
+            <li><i class="fas fa-snowflake"></i>1 semana congelamiento</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+        <div class="plan-card featured fade-in">
+          <div class="plan-badge">MÁS POPULAR</div>
+          <h3 class="plan-name">6 Meses</h3>
+          <div class="plan-price">$170.000</div>
+          <div class="plan-period">pago único</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-fire"></i>Uso ilimitado en días</li>
+            <li><i class="fas fa-snowflake"></i>14 días congelamiento</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+        <div class="plan-card fade-in">
+          <h3 class="plan-name">12 Meses</h3>
+          <div class="plan-price">$300.000</div>
+          <div class="plan-period">pago único</div>
+          <ul class="plan-features">
+            <li><i class="fas fa-fire"></i>Uso ilimitado en días</li>
+            <li><i class="fas fa-snowflake"></i>30 días congelamiento</li>
+          </ul>
+          <a href="https://wa.me/56999119067" class="plan-cta" target="_blank">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIO -->
+<section id="horario">
+  <div class="container">
+    <span class="section-label fade-in">Entrena cuando puedas</span>
+    <h2 class="section-title fade-in">Horario<br><span style="color:var(--rojo)">de Batalla</span></h2>
+    <div class="section-divider fade-in"></div>
+    <div class="horario-grid">
+      <div class="horario-card fade-in">
+        <div class="horario-icon"><i class="fas fa-sun"></i></div>
+        <div class="horario-dia">Lunes a Viernes</div>
+        <div class="horario-tiempo">06:00 – 22:00</div>
+      </div>
+      <div class="horario-card fade-in">
+        <div class="horario-icon"><i class="fas fa-umbrella-beach"></i></div>
+        <div class="horario-dia">Sábados</div>
+        <div class="horario-tiempo">08:00 – 14:00</div>
+      </div>
+      <div class="horario-card cerrado fade-in">
+        <div class="horario-icon"><i class="fas fa-moon"></i></div>
+        <div class="horario-dia">Domingos y Festivos</div>
+        <div class="horario-tiempo">Cerrado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GENERADOR DE RUTINAS -->
+<section id="rutinas">
+  <div class="container">
+    <span class="section-label fade-in">Desbloquea tu potencial</span>
+    <h2 class="section-title fade-in">Generador de<br><span class="fire-text">Rutina Personalizada</span></h2>
+    <div class="section-divider fade-in"></div>
+    <p style="color:rgba(255,255,255,0.55);max-width:600px;margin-bottom:3rem;" class="fade-in">Ingresa tus datos y te generamos una rutina adaptada a tu objetivo. Como Goku diseñando su entrenamiento para el próximo torneo.</p>
+    <div class="rutinas-container">
+      <div class="rutinas-form-card fade-in">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Sexo</label>
+            <select id="rt-sexo"><option value="masculino">Masculino</option><option value="femenino">Femenino</option></select>
+          </div>
+          <div class="form-group">
+            <label>Nivel</label>
+            <select id="rt-nivel"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Peso (kg)</label>
+            <input type="number" id="rt-peso" placeholder="Ej: 75" min="30" max="200">
+          </div>
+          <div class="form-group">
+            <label>Días / semana</label>
+            <select id="rt-dias"><option value="2">2 días</option><option value="3" selected>3 días</option><option value="4">4 días</option><option value="5">5 días</option></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Objetivo Principal</label>
+          <select id="rt-objetivo">
+            <option value="perdida">Pérdida de Peso</option>
+            <option value="musculo">Ganar Músculo</option>
+            <option value="tonificar">Tonificar</option>
+            <option value="resistencia">Resistencia</option>
+            <option value="fuerza">Fuerza Máxima</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Zona a priorizar</label>
+          <select id="rt-zona"><option value="full">Cuerpo Completo</option><option value="tren-superior">Tren Superior</option><option value="tren-inferior">Tren Inferior</option><option value="core">Core & Abdomen</option></select>
+        </div>
+        <button class="btn btn-rojo" style="width:100%;font-size:1.2rem;padding:1rem;" onclick="generarRutina()">
+          <i class="fas fa-bolt"></i> ¡Generar Mi Rutina!
+        </button>
+      </div>
+      <div class="rutinas-result fade-in" id="rutinas-result">
+        <div class="rutinas-result-placeholder" id="rutina-placeholder">
+          <i class="fas fa-fist-raised"></i>
+          <p style="font-family:'Teko',sans-serif;font-size:1.5rem;text-transform:uppercase;">Tu rutina aparecerá aquí</p>
+          <p style="font-size:0.85rem;">Completa el formulario y presiona generar</p>
+        </div>
+        <div class="routine-output" id="routine-output"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+  <!-- Saiyan SVG decorativo -->
+  <svg class="saiyan-deco" viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg" fill="#dc1c1c">
+    <!-- aura base -->
+    <ellipse cx="140" cy="500" rx="105" ry="18" fill="#dc1c1c" opacity="0.4"/>
+    <!-- hair spikes -->
+    <polygon points="115,118 78,130 48,18" />
+    <polygon points="126,104 95,112 72,8" />
+    <polygon points="138,95 120,106 128,2" />
+    <polygon points="150,92 140,104 158,0" />
+    <polygon points="162,96 152,108 185,10" />
+    <polygon points="175,108 163,122 205,22" />
+    <polygon points="190,122 178,138 232,45" />
+    <!-- head -->
+    <ellipse cx="150" cy="135" rx="42" ry="46"/>
+    <!-- neck -->
+    <rect x="133" y="174" width="34" height="28" rx="4"/>
+    <!-- torso -->
+    <path d="M82,200 L78,318 L222,318 L218,200 L192,180 L150,192 L108,180 Z"/>
+    <!-- left arm down -->
+    <path d="M82,208 Q48,248 22,296 Q16,308 30,316 Q44,324 52,310 Q76,264 108,224 Z"/>
+    <ellipse cx="25" cy="310" rx="16" ry="13"/>
+    <!-- right arm extended -->
+    <path d="M218,204 Q248,188 268,178 Q280,172 278,186 Q276,200 264,206 Q244,216 220,220 Z"/>
+    <ellipse cx="274" cy="190" rx="16" ry="13"/>
+    <!-- left leg -->
+    <path d="M98,316 Q84,392 80,458 Q78,472 94,476 Q110,480 114,464 Q120,398 122,318 Z"/>
+    <ellipse cx="88" cy="470" rx="20" ry="10"/>
+    <!-- right leg -->
+    <path d="M178,316 Q194,392 202,458 Q206,472 192,476 Q178,480 174,464 Q168,398 160,318 Z"/>
+    <ellipse cx="196" cy="470" rx="20" ry="10"/>
+    <!-- gi sash lines -->
+    <path d="M78,318 Q58,380 52,430" stroke="#dc1c1c" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M222,318 Q238,375 244,425" stroke="#dc1c1c" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <!-- aura rays -->
+    <line x1="150" y1="130" x2="150" y2="40" stroke="#dc1c1c" stroke-width="2" opacity="0.3"/>
+    <line x1="80" y1="200" x2="20" y2="160" stroke="#dc1c1c" stroke-width="2" opacity="0.3"/>
+    <line x1="220" y1="200" x2="270" y2="155" stroke="#dc1c1c" stroke-width="2" opacity="0.3"/>
+  </svg>
+
+  <div class="container lb-inner">
+    <span class="section-label fade-in">Poder de combate</span>
+    <h2 class="section-title fade-in">Los <span style="color:var(--rojo)">Guerreros</span><br>de Sport Training</h2>
+    <div class="section-divider fade-in"></div>
+    <p style="color:rgba(255,255,255,0.52);margin-bottom:2.5rem;max-width:580px;" class="fade-in">
+      El poder se mide en constancia. Nosotros lo sabemos, y ellos lo demuestran cada vez que cruzan esa puerta. ¿Tienes la disciplina para estar aquí arriba?
+    </p>
+
+    <div class="lb-tabs fade-in">
+      <div class="lb-tab active" onclick="switchLbTab('mensual',this)">
+        <span class="lb-tab-icon">⚡</span>
+        <div class="lb-tab-title">Kaio-ken x20</div>
+        <div class="lb-tab-sub">Asistencias del mes · Los más constantes</div>
+      </div>
+      <div class="lb-tab" onclick="switchLbTab('legendario',this)">
+        <span class="lb-tab-icon">🔥</span>
+        <div class="lb-tab-title">Legendarios Super Saiyan</div>
+        <div class="lb-tab-sub">Récord histórico · Los inmortales</div>
+      </div>
+    </div>
+
+    <div id="lb-mensual" class="lb-panel active">
+      <div class="lb-list">
+        <div class="lb-entry rank-1">
+          <div class="lb-rank">1</div>
+          <div class="lb-info">
+            <div class="lb-name">Rodrigo M.</div>
+            <div class="lb-detail">Miembro desde 2023</div>
+            <div class="lb-badge"><i class="fas fa-bolt"></i> Kaio-ken x20</div>
+          </div>
+          <div class="lb-score"><div class="lb-number">26</div><div class="lb-unit">asistencias este mes</div></div>
+        </div>
+        <div class="lb-entry rank-2">
+          <div class="lb-rank">2</div>
+          <div class="lb-info">
+            <div class="lb-name">Valentina R.</div>
+            <div class="lb-detail">Miembro desde 2024</div>
+            <div class="lb-badge"><i class="fas fa-fire"></i> Guerrero Élite</div>
+          </div>
+          <div class="lb-score"><div class="lb-number">23</div><div class="lb-unit">asistencias este mes</div></div>
+        </div>
+        <div class="lb-entry rank-3">
+          <div class="lb-rank">3</div>
+          <div class="lb-info">
+            <div class="lb-name">Andrés C.</div>
+            <div class="lb-detail">Miembro desde 2023</div>
+            <div class="lb-badge"><i class="fas fa-medal"></i> Combatiente Z</div>
+          </div>
+          <div class="lb-score"><div class="lb-number">21</div><div class="lb-unit">asistencias este mes</div></div>
+        </div>
+        <div class="lb-entry">
+          <div class="lb-rank">4</div>
+          <div class="lb-info"><div class="lb-name">Catalina V.</div><div class="lb-detail">Miembro desde 2024</div></div>
+          <div class="lb-score"><div class="lb-number">19</div><div class="lb-unit">asistencias este mes</div></div>
+        </div>
+        <div class="lb-entry">
+          <div class="lb-rank">5</div>
+          <div class="lb-info"><div class="lb-name">Felipe T.</div><div class="lb-detail">Miembro desde 2025</div></div>
+          <div class="lb-score"><div class="lb-number">18</div><div class="lb-unit">asistencias este mes</div></div>
+        </div>
+      </div>
+      <div class="lb-note"><i class="fas fa-sync-alt"></i> Ranking actualizado mensualmente. Próximamente sincronizado en tiempo real.</div>
+    </div>
+
+    <div id="lb-legendario" class="lb-panel">
+      <div class="lb-list">
+        <div class="lb-entry rank-1">
+          <div class="lb-rank">1</div>
+          <div class="lb-info">
+            <div class="lb-name">Rodrigo M.</div>
+            <div class="lb-detail">Récord histórico del gimnasio</div>
+            <div class="lb-badge" style="background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.4);color:#ffd700;"><i class="fas fa-dragon"></i> Legendario Super Saiyan</div>
+          </div>
+          <div class="lb-score"><div class="lb-number" style="color:var(--oro-claro);">312</div><div class="lb-unit">asistencias totales</div></div>
+        </div>
+        <div class="lb-entry rank-2">
+          <div class="lb-rank">2</div>
+          <div class="lb-info">
+            <div class="lb-name">Marcela O.</div>
+            <div class="lb-detail">Veterana del hierro</div>
+            <div class="lb-badge" style="background:rgba(255,215,0,0.07);border-color:rgba(255,215,0,0.25);color:#ffd700;"><i class="fas fa-dragon"></i> Legendario Super Saiyan</div>
+          </div>
+          <div class="lb-score"><div class="lb-number" style="color:#ccc;">287</div><div class="lb-unit">asistencias totales</div></div>
+        </div>
+        <div class="lb-entry rank-3">
+          <div class="lb-rank">3</div>
+          <div class="lb-info">
+            <div class="lb-name">Andrés C.</div>
+            <div class="lb-detail">El incontenible</div>
+            <div class="lb-badge"><i class="fas fa-fire"></i> Super Saiyan 3</div>
+          </div>
+          <div class="lb-score"><div class="lb-number" style="color:#cd7f32;">241</div><div class="lb-unit">asistencias totales</div></div>
+        </div>
+        <div class="lb-entry">
+          <div class="lb-rank">4</div>
+          <div class="lb-info"><div class="lb-name">Valentina R.</div><div class="lb-detail">Ascendiendo a la élite</div></div>
+          <div class="lb-score"><div class="lb-number">198</div><div class="lb-unit">asistencias totales</div></div>
+        </div>
+        <div class="lb-entry">
+          <div class="lb-rank">5</div>
+          <div class="lb-info"><div class="lb-name">Jorge P.</div><div class="lb-detail">El silencioso pero letal</div></div>
+          <div class="lb-score"><div class="lb-number">174</div><div class="lb-unit">asistencias totales</div></div>
+        </div>
+      </div>
+      <div class="lb-note" style="border-color:rgba(255,215,0,0.1);"><i class="fas fa-trophy"></i> Estatus Legendario: más de 200 asistencias históricas. Datos demostrativos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="container">
+    <span class="section-label fade-in">Conócenos</span>
+    <h2 class="section-title fade-in">Galería<br><span style="color:var(--rojo)">de Poder</span></h2>
+    <div class="section-divider fade-in"></div>
+  </div>
+  <div style="max-width:1300px;margin:0 auto;padding:0 1.5rem;">
+    <div class="gallery-grid fade-in">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3373-1024x768.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_5798-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3360-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3358-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3377-1024x768.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3337-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3316-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3322-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/IMG_3349-768x1024.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/9412a4ca-7589-49f8-babb-58fcf5ca0107.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/b9b61c68-6b0a-4bca-89c0-774da67a0efd.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="Componentes página web anterior/65bb4ffb-1f49-48bb-a1c1-a81a60301ce2.jpeg" alt="Sport Training Beach">
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <span class="section-label fade-in">Únete hoy</span>
+    <h2 class="section-title fade-in">Contáctanos<br><span style="color:var(--rojo)">Empieza tu historia</span></h2>
+    <div class="section-divider fade-in"></div>
+    <div class="contacto-grid">
+      <div class="contacto-info fade-in">
+        <div class="contacto-items">
+          <div class="contacto-item">
+            <div class="contacto-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contacto-item-text">
+              <div class="contacto-item-label">Ubicación</div>
+              <p>Los Cerrillos 7, El Quisco<br>Litoral Central</p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <div class="contacto-item-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="contacto-item-text">
+              <div class="contacto-item-label">WhatsApp / Teléfono</div>
+              <p><a href="tel:+56999119067">+56 9 9911 9067</a></p>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <div class="contacto-item-icon"><i class="fas fa-clock"></i></div>
+            <div class="contacto-item-text">
+              <div class="contacto-item-label">Horario</div>
+              <p>Lun–Vie: 06:00 a 22:00<br>Sáb: 08:00 a 14:00<br>Dom y Festivos: Cerrado</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/56999119067" class="whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp" style="font-size:1.5rem;"></i>
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+      <div class="contacto-form fade-in">
+        <h3>Envíanos un Mensaje</h3>
+        <input type="text" id="cf-nombre" placeholder="¿Cómo te llamas?">
+        <input type="email" id="cf-email" placeholder="¿Cuál es tu correo?">
+        <select id="cf-plan">
+          <option value="">¿Te gustó algún plan?</option>
+          <option>Ticket Diario – $5.000</option>
+          <option>Plan 8 Tickets – $24.000</option>
+          <option>Plan 12 Tickets – $27.000</option>
+          <option>Plan Estudiante – $25.000</option>
+          <option>Plan Full 30 días – $30.000</option>
+          <option>Plan Full 3 Meses – $84.000</option>
+          <option>Plan Full 6 Meses – $170.000</option>
+          <option>Plan Full 12 Meses – $300.000</option>
+          <option>Otra consulta</option>
+        </select>
+        <textarea id="cf-msg" placeholder="Escribe tu mensaje..."></textarea>
+        <button class="btn btn-rojo" style="width:100%;" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i> Enviar Mensaje
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="Componentes página web anterior/cropped-logogimnasiosport-300x100.jpg" alt="Sport Training Beach">
+      <p>El gimnasio más grande del Litoral Central. Forja tu cuerpo, despierta al guerrero que llevas dentro. Sport Training Beach — El Quisco.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul class="footer-links">
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="#horario">Horario</a></li>
+        <li><a href="#rutinas">Mi Rutina</a></li>
+        <li><a href="#leaderboard">Leaderboard</a></li>
+        <li><a href="#galeria">Galería</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/56999119067">+56 9 9911 9067</a></li>
+        <li><a href="#contacto">Los Cerrillos 7, El Quisco</a></li>
+        <li><a href="https://wa.me/56999119067">WhatsApp directo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sport Training Beach — Todos los derechos reservados</span>
+    <span>El gimnasio más grande del Litoral Central</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/56999119067" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <span class="wa-float-label">Escríbenos ahora</span>
+  <div class="wa-float-bubble">
+    <div class="wa-pulse"></div>
+    <i class="fab fa-whatsapp"></i>
+  </div>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+// ── NAV ──
+function toggleMenu() {
+  const menu = document.getElementById('nav-menu');
+  const ham = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('nav-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ── TABS PLANES ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.planes-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── TABS LEADERBOARD ──
+function switchLbTab(id, el) {
+  document.querySelectorAll('.lb-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('lb-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── LIGHTBOX ──
+function openLightbox(item) {
+  document.getElementById('lightbox-img').src = item.querySelector('img').src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+// ── SCROLL FADE ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── SEND MESSAGE ──
+function sendMessage() {
+  const name = document.getElementById('cf-nombre').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const plan = document.getElementById('cf-plan').value;
+  const msg = document.getElementById('cf-msg').value.trim();
+  if (!name || !msg) { alert('Por favor completa nombre y mensaje.'); return; }
+  const text = encodeURIComponent(`Hola! Soy ${name}${email?' ('+email+')':''}.${plan?' Plan de interés: '+plan+'.':''} ${msg}`);
+  window.open('https://wa.me/56999119067?text=' + text, '_blank');
+}
+
+// ── GENERADOR DE RUTINAS ──
+const RUTINAS = {
+  perdida:{
+    principiante:{
+      3:[
+        {dia:'DÍA 1 — Cardio + Cuerpo Completo',ejercicios:[{n:'Caminata en cinta inclinada (8°)',s:'30 min'},{n:'Sentadillas con peso corporal',s:'3×15'},{n:'Flexiones (modificadas)',s:'3×10'},{n:'Plancha',s:'3×30 seg'},{n:'Bicicleta estática',s:'15 min'}]},
+        {dia:'DÍA 2 — Circuito Funcional',ejercicios:[{n:'Trote suave en cinta',s:'20 min'},{n:'Jumping jacks',s:'3×30'},{n:'Estocadas alternadas',s:'3×12/pierna'},{n:'Remo en máquina',s:'3×12'},{n:'Abdominales básicos',s:'3×20'}]},
+        {dia:'DÍA 3 — Tren Inferior + Cardio',ejercicios:[{n:'Leg press',s:'4×15'},{n:'Extensiones de cuádriceps',s:'3×12'},{n:'Curl femoral',s:'3×12'},{n:'Caminata cinta (inclinación 10°)',s:'25 min'}]},
+      ]
+    },
+    intermedio:{
+      3:[
+        {dia:'DÍA 1 — HIIT + Empuje',ejercicios:[{n:'Intervalos en cinta (1min sprint / 1min descanso)',s:'20 min'},{n:'Press banca con barra',s:'4×10'},{n:'Press militar mancuernas',s:'3×12'},{n:'Fondos en paralelas',s:'3×al fallo'},{n:'Plancha lateral',s:'3×40 seg'}]},
+        {dia:'DÍA 2 — Piernas + Cardio',ejercicios:[{n:'Sentadilla con barra',s:'4×12'},{n:'Peso muerto rumano',s:'4×10'},{n:'Zancadas con mancuernas',s:'3×10/pierna'},{n:'Gemelos en prensa',s:'4×20'},{n:'Bicicleta estática moderada',s:'15 min'}]},
+        {dia:'DÍA 3 — Jalón + Circuito Abdomen',ejercicios:[{n:'Jalón al pecho en polea',s:'4×12'},{n:'Remo con barra',s:'4×10'},{n:'Curl bíceps con barra',s:'3×12'},{n:'Circuito abdomen (crunches+bici+plancha)',s:'4 rondas'}]},
+      ]
+    },
+    avanzado:{
+      4:[
+        {dia:'DÍA 1 — Pecho + Tríceps',ejercicios:[{n:'Press banca con barra',s:'5×5'},{n:'Press inclinado mancuernas',s:'4×8'},{n:'Aperturas en cable',s:'3×15'},{n:'Fondos lastrados',s:'4×8'},{n:'Extensión tríceps polea',s:'3×15'}]},
+        {dia:'DÍA 2 — Espalda + Bíceps + HIIT',ejercicios:[{n:'Peso muerto convencional',s:'5×5'},{n:'Dominadas (con lastre)',s:'4×8'},{n:'Remo con barra',s:'4×8'},{n:'Curl predicador',s:'3×12'},{n:'HIIT en remo ergómetro',s:'10 min'}]},
+        {dia:'DÍA 3 — Piernas',ejercicios:[{n:'Sentadilla con barra',s:'5×5'},{n:'Leg press',s:'4×12'},{n:'Peso muerto rumano',s:'4×8'},{n:'Prensa de gemelos',s:'5×20'},{n:'Sentadilla búlgara',s:'3×10/pierna'}]},
+        {dia:'DÍA 4 — Hombros + Core + Cardio',ejercicios:[{n:'Press militar con barra',s:'4×8'},{n:'Elevaciones laterales superset frontales',s:'3×15'},{n:'Face pull en polea',s:'3×15'},{n:'Plancha con rotación',s:'4×30 seg'},{n:'Elíptica o bicicleta continua',s:'20 min'}]},
+      ]
+    }
+  },
+  musculo:{
+    principiante:{
+      3:[
+        {dia:'DÍA 1 — Pecho + Tríceps',ejercicios:[{n:'Press pecho en máquina',s:'4×10'},{n:'Aperturas con mancuernas',s:'3×12'},{n:'Press francés mancuerna',s:'3×12'},{n:'Fondos asistidos',s:'3×10'}]},
+        {dia:'DÍA 2 — Espalda + Bíceps',ejercicios:[{n:'Jalón al pecho en polea',s:'4×10'},{n:'Remo sentado en máquina',s:'4×10'},{n:'Curl bíceps con barra',s:'3×12'},{n:'Curl martillo',s:'3×12'}]},
+        {dia:'DÍA 3 — Piernas + Hombros',ejercicios:[{n:'Leg press',s:'4×12'},{n:'Extensión cuádriceps',s:'3×12'},{n:'Curl femoral',s:'3×12'},{n:'Press hombros en máquina',s:'3×12'},{n:'Elevaciones laterales',s:'3×15'}]},
+      ]
+    },
+    intermedio:{
+      4:[
+        {dia:'DÍA 1 — Pecho',ejercicios:[{n:'Press banca con barra',s:'5×5'},{n:'Press inclinado mancuernas',s:'4×8'},{n:'Cruces en cable',s:'3×15'},{n:'Fondos en paralelas',s:'3×al fallo'}]},
+        {dia:'DÍA 2 — Espalda',ejercicios:[{n:'Peso muerto',s:'5×5'},{n:'Dominadas',s:'4×8'},{n:'Remo con barra',s:'4×8'},{n:'Pullover en polea',s:'3×15'}]},
+        {dia:'DÍA 3 — Piernas',ejercicios:[{n:'Sentadilla con barra',s:'5×5'},{n:'Leg press',s:'4×10'},{n:'Peso muerto rumano',s:'4×8'},{n:'Prensa gemelos',s:'5×20'}]},
+        {dia:'DÍA 4 — Hombros + Brazos',ejercicios:[{n:'Press militar',s:'4×8'},{n:'Elevaciones laterales',s:'4×12'},{n:'Curl barra EZ',s:'4×10'},{n:'Extensión tríceps polea',s:'4×12'}]},
+      ]
+    },
+    avanzado:{
+      5:[
+        {dia:'DÍA 1 — Pecho Fuerza',ejercicios:[{n:'Press banca con barra',s:'6×3-5'},{n:'Press inclinado con barra',s:'4×6'},{n:'Fondos lastrados',s:'4×8'},{n:'Aperturas en cable bajo',s:'3×15'}]},
+        {dia:'DÍA 2 — Espalda Fuerza',ejercicios:[{n:'Peso muerto convencional',s:'6×3'},{n:'Dominadas lastradas',s:'4×6'},{n:'Remo Pendlay',s:'4×6'},{n:'Remo en polea ancha',s:'3×12'}]},
+        {dia:'DÍA 3 — Piernas Fuerza',ejercicios:[{n:'Sentadilla con barra',s:'6×3-5'},{n:'Sentadilla búlgara',s:'4×8'},{n:'Peso muerto rumano',s:'4×8'},{n:'Gemelos de pie',s:'6×15'}]},
+        {dia:'DÍA 4 — Hombros + Tríceps',ejercicios:[{n:'Press militar barra de pie',s:'5×5'},{n:'Elevaciones laterales',s:'5×12'},{n:'Face pull',s:'4×15'},{n:'Fondos cerrados',s:'4×10'}]},
+        {dia:'DÍA 5 — Brazos + Core',ejercicios:[{n:'Curl barra EZ pesado',s:'4×8'},{n:'Curl concentración',s:'3×12'},{n:'Extensión tríceps tumbado',s:'4×8'},{n:'Plancha con peso en espalda',s:'4×45 seg'},{n:'Rueda abdominal',s:'3×15'}]},
+      ]
+    }
+  },
+  tonificar:{
+    principiante:{
+      3:[
+        {dia:'DÍA 1 — Cuerpo Completo',ejercicios:[{n:'Sentadillas con peso corporal',s:'3×20'},{n:'Flexiones (modificadas)',s:'3×15'},{n:'Hip thrust peso corporal',s:'3×20'},{n:'Plancha',s:'3×30 seg'},{n:'Zancadas alternadas',s:'3×12/pierna'}]},
+        {dia:'DÍA 2 — Tren Superior + Cardio',ejercicios:[{n:'Remo mancuerna a una mano',s:'3×12'},{n:'Press mancuernas',s:'3×15'},{n:'Elevaciones laterales',s:'3×15'},{n:'Curl bíceps',s:'3×15'},{n:'Cardio moderado',s:'20 min'}]},
+        {dia:'DÍA 3 — Tren Inferior + Core',ejercicios:[{n:'Leg press',s:'4×15'},{n:'Hip thrust con barra',s:'4×15'},{n:'Curl femoral acostado',s:'3×15'},{n:'Abdominales banco declinado',s:'4×20'},{n:'Plancha lateral',s:'3×30 seg'}]},
+      ]
+    },
+    intermedio:{
+      4:[
+        {dia:'DÍA 1 — Glúteos + Isquiotibiales',ejercicios:[{n:'Hip thrust con barra',s:'5×12'},{n:'Peso muerto rumano',s:'4×10'},{n:'Patada glúteo en polea',s:'4×15'},{n:'Sentadilla sumo con mancuerna',s:'4×12'}]},
+        {dia:'DÍA 2 — Tren Superior Completo',ejercicios:[{n:'Press banca mancuernas',s:'4×12'},{n:'Remo en polea',s:'4×12'},{n:'Elevaciones laterales',s:'4×15'},{n:'Extensión tríceps polea',s:'3×15'},{n:'Curl alterno mancuernas',s:'3×15'}]},
+        {dia:'DÍA 3 — Piernas Completo',ejercicios:[{n:'Sentadilla con barra',s:'4×12'},{n:'Leg press',s:'4×15'},{n:'Extensión cuádriceps',s:'3×15'},{n:'Prensa de gemelos',s:'4×20'}]},
+        {dia:'DÍA 4 — Core + Cardio Quema Grasa',ejercicios:[{n:'Rueda abdominal',s:'4×12'},{n:'Plancha con rotación',s:'4×10/lado'},{n:'Abdominales en banco',s:'4×25'},{n:'HIIT elíptica o cinta',s:'20 min'}]},
+      ]
+    }
+  },
+  resistencia:{
+    principiante:{
+      3:[
+        {dia:'DÍA 1 — Cardio Base',ejercicios:[{n:'Caminata rápida en cinta',s:'30 min'},{n:'Sentadillas',s:'3×15'},{n:'Plancha',s:'3×30 seg'}]},
+        {dia:'DÍA 2 — Circuito',ejercicios:[{n:'Bicicleta estática',s:'20 min'},{n:'Flexiones',s:'3×12'},{n:'Remo máquina',s:'3×15'},{n:'Mountain climbers',s:'3×20'}]},
+        {dia:'DÍA 3 — Cardio + Core',ejercicios:[{n:'Elíptica ritmo moderado',s:'35 min'},{n:'Abdominales básicos',s:'4×20'},{n:'Plancha lateral',s:'3×30 seg'}]},
+      ]
+    },
+    intermedio:{
+      3:[
+        {dia:'DÍA 1 — HIIT + Circuito',ejercicios:[{n:'Carrera continua en cinta',s:'30 min'},{n:'Sentadillas',s:'3×20'},{n:'Flexiones',s:'3×20'},{n:'Burpees',s:'3×15'},{n:'Mountain climbers',s:'3×30'}]},
+        {dia:'DÍA 2 — Fuerza-Resistencia',ejercicios:[{n:'Circuito press pecho/remo/sentadilla/plancha',s:'5 rondas ×15'},{n:'Peso muerto moderado',s:'4×15'},{n:'Saltos al cajón',s:'4×10'}]},
+        {dia:'DÍA 3 — Cardiovascular',ejercicios:[{n:'Spinning o bicicleta',s:'45 min moderado-alto'},{n:'Remo ergómetro',s:'15 min'},{n:'Plancha y variaciones',s:'5 min'}]},
+      ]
+    }
+  },
+  fuerza:{
+    intermedio:{
+      3:[
+        {dia:'DÍA 1 — Tren Inferior',ejercicios:[{n:'Sentadilla con barra',s:'5×5'},{n:'Peso muerto rumano',s:'4×6'},{n:'Prensa de piernas',s:'3×8'},{n:'Gemelos de pie',s:'4×15'}]},
+        {dia:'DÍA 2 — Empuje',ejercicios:[{n:'Press banca con barra',s:'5×5'},{n:'Press militar',s:'4×6'},{n:'Fondos',s:'3×10'},{n:'Extensión tríceps',s:'3×10'}]},
+        {dia:'DÍA 3 — Jalón',ejercicios:[{n:'Peso muerto convencional',s:'5×5'},{n:'Dominadas',s:'4×8'},{n:'Remo con barra',s:'4×8'},{n:'Curl bíceps',s:'3×10'}]},
+      ]
+    },
+    avanzado:{
+      4:[
+        {dia:'DÍA 1 — Sentadilla',ejercicios:[{n:'Sentadilla con barra',s:'6×3'},{n:'Sentadilla pausa',s:'3×3'},{n:'Leg press',s:'4×6'},{n:'Prensa gemelos',s:'5×10'}]},
+        {dia:'DÍA 2 — Press Banca',ejercicios:[{n:'Press banca pesado',s:'6×3'},{n:'Press banca pausa',s:'3×3'},{n:'Press inclinado',s:'3×5'},{n:'Fondos lastrados',s:'3×8'}]},
+        {dia:'DÍA 3 — Peso Muerto',ejercicios:[{n:'Peso muerto convencional',s:'6×2'},{n:'Peso muerto sumo',s:'3×3'},{n:'Remo Pendlay',s:'4×5'},{n:'Dominadas lastradas',s:'4×5'}]},
+        {dia:'DÍA 4 — Press Militar + Accesorios',ejercicios:[{n:'Press militar barra',s:'5×5'},{n:'Remo al cuello',s:'3×8'},{n:'Fondos cerrados',s:'3×8'},{n:'Curl barra EZ',s:'3×8'}]},
+      ]
+    }
+  }
+};
+
+const TIPS = {
+  perdida:'Mantén un déficit calórico moderado (300-500 kcal/día). Prioriza proteínas (1.6-2g/kg) para preservar músculo. Mínimo 2.5L de agua al día.',
+  musculo:'Superávit calórico de 200-400 kcal. Consume 1.8–2.2g de proteína por kg de peso. Duerme 7-9 horas: el músculo crece en el descanso.',
+  tonificar:'Combina déficit leve con alto volumen de repeticiones. Proteína alta (1.8g/kg). El cardio 2-3 veces por semana potencia la definición.',
+  resistencia:'Carbohidratos complejos antes del entrenamiento. Recuperación activa entre sesiones. Hidratación constante durante el ejercicio.',
+  fuerza:'Periodización progresiva. Aumenta carga gradualmente (2.5-5% semanal). Descansa 3-5 min entre series pesadas. El descanso es parte del entrenamiento.',
+};
+
+function getBestMatch(data, nivel, dias) {
+  if (data[nivel]?.[dias]) return data[nivel][dias];
+  const niveles = ['avanzado','intermedio','principiante'];
+  for (const n of niveles) {
+    if (data[n]) {
+      const keys = Object.keys(data[n]).map(Number).sort((a,b)=>a-b);
+      const closest = keys.reduce((prev,curr) => Math.abs(curr-dias) < Math.abs(prev-dias) ? curr : prev);
+      return data[n][closest];
+    }
+  }
+  return null;
+}
+
+function generarRutina() {
+  const objetivo = document.getElementById('rt-objetivo').value;
+  const nivel = document.getElementById('rt-nivel').value;
+  const dias = parseInt(document.getElementById('rt-dias').value);
+  const peso = document.getElementById('rt-peso').value || '?';
+  const sexo = document.getElementById('rt-sexo').value;
+  const routine = getBestMatch(RUTINAS[objetivo], nivel, dias);
+  const placeholder = document.getElementById('rutina-placeholder');
+  const output = document.getElementById('routine-output');
+  const objetivoLabels = {perdida:'Pérdida de Peso',musculo:'Ganar Músculo',tonificar:'Tonificar',resistencia:'Resistencia',fuerza:'Fuerza Máxima'};
+  if (!routine) {
+    output.innerHTML = '<p style="color:rgba(255,255,255,0.5);text-align:center;padding:2rem;">Consulta con nuestros entrenadores para esta combinación.</p>';
+    placeholder.style.display = 'none'; output.classList.add('visible'); return;
+  }
+  let html = `<p class="routine-title">${objetivoLabels[objetivo]}</p><p class="routine-subtitle">${nivel.charAt(0).toUpperCase()+nivel.slice(1)} · ${peso}kg · ${sexo} · ${routine.length} días/semana</p>`;
+  routine.forEach(day => {
+    html += `<div class="routine-day"><div class="routine-day-title">${day.dia}</div><ul class="exercise-list">${day.ejercicios.map(e=>`<li class="exercise-item"><span class="ex-name">${e.n}</span><span class="ex-sets">${e.s}</span></li>`).join('')}</ul></div>`;
+  });
+  html += `<div class="routine-tip"><i class="fas fa-lightbulb" style="color:var(--rojo);margin-right:0.5rem;"></i><strong>Consejo:</strong> ${TIPS[objetivo]}</div>`;
+  placeholder.style.display = 'none';
+  output.innerHTML = html;
+  output.classList.add('visible');
+  document.getElementById('rutinas-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
+</body>
+</html>
