@@ -329,6 +329,12 @@ section { padding: 6rem 2rem; }
 .gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(220,28,28,0.4),transparent); opacity:0; transition:opacity 0.3s; }
 .gallery-item:hover .gallery-overlay { opacity:1; }
 
+/* ── CÓMO LLEGAR VIDEO ── */
+.como-llegar { text-align:center; margin-bottom:3.5rem; }
+.como-llegar-label { display:inline-flex; align-items:center; gap:0.5rem; font-family:'Teko',sans-serif; font-size:1rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rojo); margin-bottom:1rem; }
+.como-llegar-video { width:100%; max-width:700px; border-radius:6px; border:1px solid rgba(220,28,28,0.25); display:block; margin:0 auto 0.75rem; background:#000; }
+.como-llegar-text { color:rgba(255,255,255,0.38); font-size:0.85rem; letter-spacing:0.05em; }
+
 /* ── CONTACTO ── */
 #contacto { background:var(--negro); }
 .contacto-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:start; margin-top:3rem; }
@@ -942,6 +948,13 @@ footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); pa
     <span class="section-label fade-in">Únete hoy</span>
     <h2 class="section-title fade-in">Contáctanos<br><span style="color:var(--rojo)">Empieza tu historia</span></h2>
     <div class="section-divider fade-in"></div>
+
+    <div class="como-llegar fade-in">
+      <div class="como-llegar-label"><i class="fas fa-route"></i> Cómo llegar</div>
+      <video class="como-llegar-video" src="img/como-llegar.mp4" controls playsinline muted></video>
+      <p class="como-llegar-text">Los Cerrillos 7, El Quisco — Litoral Central</p>
+    </div>
+
     <div class="contacto-grid">
       <div class="contacto-info fade-in">
         <div class="contacto-items">
