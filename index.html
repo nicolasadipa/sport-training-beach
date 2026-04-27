@@ -352,14 +352,14 @@ section { padding: 6rem 2rem; }
 .gallery-item:hover .gallery-overlay { opacity:1; }
 
 /* ── CÓMO LLEGAR VIDEO ── */
-.como-llegar { text-align:center; margin-bottom:3.5rem; }
-.como-llegar-label { display:inline-flex; align-items:center; gap:0.5rem; font-family:'Teko',sans-serif; font-size:1rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rojo); margin-bottom:1rem; }
-.como-llegar-video { width:100%; max-width:700px; border-radius:6px; border:1px solid rgba(220,28,28,0.25); display:block; margin:0 auto 0.75rem; background:#000; }
+.como-llegar-col { display:flex; flex-direction:column; gap:1rem; }
+.como-llegar-label { display:inline-flex; align-items:center; gap:0.5rem; font-family:'Teko',sans-serif; font-size:1rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rojo); }
+.como-llegar-video { width:100%; border-radius:6px; border:1px solid rgba(220,28,28,0.25); display:block; background:#000; }
 .como-llegar-text { color:rgba(255,255,255,0.38); font-size:0.85rem; letter-spacing:0.05em; }
 
 /* ── CONTACTO ── */
 #contacto { background:var(--negro); }
-.contacto-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:start; margin-top:3rem; }
+.contacto-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:3rem; }
 .contacto-items { display:flex; flex-direction:column; gap:1.5rem; }
 .contacto-item { display:flex; align-items:flex-start; gap:1.2rem; }
 .contacto-item-icon { width:44px; height:44px; background:rgba(220,28,28,0.12); border:1px solid rgba(220,28,28,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--rojo); font-size:1rem; flex-shrink:0; }
@@ -898,7 +898,7 @@ footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); pa
         <p>Este salón de la fama está reservado para quienes forjen su legado.<br>Los inmortales del dojo se revelarán pronto.</p>
         <div class="lb-cs-badge" style="background:rgba(255,215,0,0.12);border-color:rgba(255,215,0,0.4);color:#ffd700;">Muy pronto</div>
       </div>
-      <div class="lb-note" style="border-color:rgba(255,215,0,0.1);"><i class="fas fa-trophy"></i> Estatus Legendario: más de 200 asistencias históricas. Los primeros guerreros se revelarán pronto.</div>
+      <div class="lb-note" style="border-color:rgba(255,215,0,0.1);"><i class="fas fa-trophy"></i> Estatus Legendario: más de 2000 asistencias históricas. Los primeros guerreros se revelarán pronto.</div>
     </div>
   </div>
 </section>
@@ -971,13 +971,12 @@ footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); pa
     <h2 class="section-title fade-in">Contáctanos<br><span style="color:var(--rojo)">Empieza tu historia</span></h2>
     <div class="section-divider fade-in"></div>
 
-    <div class="como-llegar fade-in">
-      <div class="como-llegar-label"><i class="fas fa-route"></i> Cómo llegar</div>
-      <video class="como-llegar-video" src="img/como-llegar.mp4" controls playsinline muted></video>
-      <p class="como-llegar-text">Los Cerrillos 7, El Quisco — Litoral Central</p>
-    </div>
-
     <div class="contacto-grid">
+      <div class="como-llegar-col fade-in">
+        <div class="como-llegar-label"><i class="fas fa-route"></i> Cómo llegar</div>
+        <video class="como-llegar-video" src="img/como-llegar.mp4" controls playsinline muted></video>
+        <p class="como-llegar-text">Los Cerrillos 7, El Quisco — Litoral Central</p>
+      </div>
       <div class="contacto-info fade-in">
         <div class="contacto-items">
           <div class="contacto-item">
