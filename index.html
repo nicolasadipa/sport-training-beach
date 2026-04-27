@@ -309,6 +309,11 @@ section { padding: 6rem 2rem; }
 .lb-number { font-family:'Teko',sans-serif; font-size:2.4rem; color:var(--rojo); line-height:1; }
 .lb-unit { font-size:0.72rem; color:rgba(255,255,255,0.38); }
 .lb-note { margin-top:1.5rem; padding:1rem; background:rgba(220,28,28,0.05); border:1px solid rgba(220,28,28,0.12); border-radius:4px; font-size:0.82rem; color:rgba(255,255,255,0.38); text-align:center; }
+.lb-coming-soon { text-align:center; padding:3.5rem 2rem; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+.lb-cs-icon { font-size:3.5rem; line-height:1; }
+.lb-coming-soon h3 { font-family:'Teko',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); color:var(--blanco); margin:0; }
+.lb-coming-soon p { color:rgba(255,255,255,0.42); font-size:0.95rem; line-height:1.7; max-width:420px; margin:0; }
+.lb-cs-badge { display:inline-block; padding:0.45rem 1.4rem; border:1px solid rgba(220,28,28,0.5); background:rgba(220,28,28,0.1); color:var(--rojo); font-family:'Teko',sans-serif; font-size:1.1rem; letter-spacing:0.15em; text-transform:uppercase; border-radius:3px; }
 
 /* ── GALERÍA ── */
 #galeria { background:var(--negro2); padding-bottom:4rem; }
@@ -849,89 +854,23 @@ footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); pa
     </div>
 
     <div id="lb-mensual" class="lb-panel active">
-      <div class="lb-list">
-        <div class="lb-entry rank-1">
-          <div class="lb-rank">1</div>
-          <div class="lb-info">
-            <div class="lb-name">Rodrigo M.</div>
-            <div class="lb-detail">Miembro desde 2023</div>
-            <div class="lb-badge"><i class="fas fa-bolt"></i> Kaio-ken x20</div>
-          </div>
-          <div class="lb-score"><div class="lb-number">26</div><div class="lb-unit">asistencias este mes</div></div>
-        </div>
-        <div class="lb-entry rank-2">
-          <div class="lb-rank">2</div>
-          <div class="lb-info">
-            <div class="lb-name">Valentina R.</div>
-            <div class="lb-detail">Miembro desde 2024</div>
-            <div class="lb-badge"><i class="fas fa-fire"></i> Guerrero Élite</div>
-          </div>
-          <div class="lb-score"><div class="lb-number">23</div><div class="lb-unit">asistencias este mes</div></div>
-        </div>
-        <div class="lb-entry rank-3">
-          <div class="lb-rank">3</div>
-          <div class="lb-info">
-            <div class="lb-name">Andrés C.</div>
-            <div class="lb-detail">Miembro desde 2023</div>
-            <div class="lb-badge"><i class="fas fa-medal"></i> Combatiente Z</div>
-          </div>
-          <div class="lb-score"><div class="lb-number">21</div><div class="lb-unit">asistencias este mes</div></div>
-        </div>
-        <div class="lb-entry">
-          <div class="lb-rank">4</div>
-          <div class="lb-info"><div class="lb-name">Catalina V.</div><div class="lb-detail">Miembro desde 2024</div></div>
-          <div class="lb-score"><div class="lb-number">19</div><div class="lb-unit">asistencias este mes</div></div>
-        </div>
-        <div class="lb-entry">
-          <div class="lb-rank">5</div>
-          <div class="lb-info"><div class="lb-name">Felipe T.</div><div class="lb-detail">Miembro desde 2025</div></div>
-          <div class="lb-score"><div class="lb-number">18</div><div class="lb-unit">asistencias este mes</div></div>
-        </div>
+      <div class="lb-coming-soon">
+        <div class="lb-cs-icon">⚡</div>
+        <h3>El ranking está cargando poder</h3>
+        <p>Pronto aquí aparecerán los guerreros más constantes del mes.<br>¿Serás tú el primero en la lista?</p>
+        <div class="lb-cs-badge">Muy pronto</div>
       </div>
-      <div class="lb-note"><i class="fas fa-sync-alt"></i> Ranking actualizado mensualmente. Próximamente sincronizado en tiempo real.</div>
+      <div class="lb-note"><i class="fas fa-sync-alt"></i> El ranking Kaio-ken x20 se actualizará cada mes con los miembros más constantes.</div>
     </div>
 
     <div id="lb-legendario" class="lb-panel">
-      <div class="lb-list">
-        <div class="lb-entry rank-1">
-          <div class="lb-rank">1</div>
-          <div class="lb-info">
-            <div class="lb-name">Rodrigo M.</div>
-            <div class="lb-detail">Récord histórico del gimnasio</div>
-            <div class="lb-badge" style="background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.4);color:#ffd700;"><i class="fas fa-dragon"></i> Legendario Super Saiyan</div>
-          </div>
-          <div class="lb-score"><div class="lb-number" style="color:var(--oro-claro);">312</div><div class="lb-unit">asistencias totales</div></div>
-        </div>
-        <div class="lb-entry rank-2">
-          <div class="lb-rank">2</div>
-          <div class="lb-info">
-            <div class="lb-name">Marcela O.</div>
-            <div class="lb-detail">Veterana del hierro</div>
-            <div class="lb-badge" style="background:rgba(255,215,0,0.07);border-color:rgba(255,215,0,0.25);color:#ffd700;"><i class="fas fa-dragon"></i> Legendario Super Saiyan</div>
-          </div>
-          <div class="lb-score"><div class="lb-number" style="color:#ccc;">287</div><div class="lb-unit">asistencias totales</div></div>
-        </div>
-        <div class="lb-entry rank-3">
-          <div class="lb-rank">3</div>
-          <div class="lb-info">
-            <div class="lb-name">Andrés C.</div>
-            <div class="lb-detail">El incontenible</div>
-            <div class="lb-badge"><i class="fas fa-fire"></i> Super Saiyan 3</div>
-          </div>
-          <div class="lb-score"><div class="lb-number" style="color:#cd7f32;">241</div><div class="lb-unit">asistencias totales</div></div>
-        </div>
-        <div class="lb-entry">
-          <div class="lb-rank">4</div>
-          <div class="lb-info"><div class="lb-name">Valentina R.</div><div class="lb-detail">Ascendiendo a la élite</div></div>
-          <div class="lb-score"><div class="lb-number">198</div><div class="lb-unit">asistencias totales</div></div>
-        </div>
-        <div class="lb-entry">
-          <div class="lb-rank">5</div>
-          <div class="lb-info"><div class="lb-name">Jorge P.</div><div class="lb-detail">El silencioso pero letal</div></div>
-          <div class="lb-score"><div class="lb-number">174</div><div class="lb-unit">asistencias totales</div></div>
-        </div>
+      <div class="lb-coming-soon">
+        <div class="lb-cs-icon">🔥</div>
+        <h3>Los Legendarios aún no han emergido</h3>
+        <p>Este salón de la fama está reservado para quienes forjen su legado.<br>Los inmortales del dojo se revelarán pronto.</p>
+        <div class="lb-cs-badge" style="background:rgba(255,215,0,0.12);border-color:rgba(255,215,0,0.4);color:#ffd700;">Muy pronto</div>
       </div>
-      <div class="lb-note" style="border-color:rgba(255,215,0,0.1);"><i class="fas fa-trophy"></i> Estatus Legendario: más de 200 asistencias históricas. Datos demostrativos.</div>
+      <div class="lb-note" style="border-color:rgba(255,215,0,0.1);"><i class="fas fa-trophy"></i> Estatus Legendario: más de 200 asistencias históricas. Los primeros guerreros se revelarán pronto.</div>
     </div>
   </div>
 </section>
