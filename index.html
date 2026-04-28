@@ -367,6 +367,7 @@ section { padding: 6rem 2rem; }
 /* ── CONTACTO ── */
 #contacto { background:var(--negro); }
 .contacto-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:3rem; }
+.contacto-right-col { display:flex; flex-direction:column; gap:2rem; }
 .contacto-form { align-self:start; }
 .contacto-items { display:flex; flex-direction:column; gap:1.5rem; }
 .contacto-item { display:flex; align-items:flex-start; gap:1.2rem; }
@@ -992,6 +993,7 @@ footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); pa
           </div>
         </div>
       </div>
+      <div class="contacto-right-col">
       <div class="contacto-info fade-in">
         <div class="contacto-items">
           <div class="contacto-item">
@@ -1052,6 +1054,7 @@ footer { background:var(--negro2); border-top:2px solid rgba(220,28,28,0.35); pa
         <button class="btn btn-rojo" style="width:100%;" onclick="sendMessage()">
           <i class="fas fa-paper-plane"></i> Enviar Mensaje
         </button>
+      </div>
       </div>
     </div>
   </div>
